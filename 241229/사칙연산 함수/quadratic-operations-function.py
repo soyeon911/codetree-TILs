@@ -28,4 +28,9 @@ def caculator(l, n, m):
 l, n, m = input().split()
 l, m = int(l), int(m)
 
-print(l, n, m, "=",caculator(l, n, m))
+result = caculator(l, n, m)
+
+if result is False:
+    print(result)
+else:
+    print(f"{l} {n} {m} = {result}")
