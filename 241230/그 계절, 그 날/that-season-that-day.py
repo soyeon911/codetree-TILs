@@ -14,6 +14,8 @@ def exist_day(Y, M, D):
         if M in [4, 6, 9, 11]:
             if D in range(1, 31):
                 return True
+            else:
+                return False
         if M == 2:
             if leap_year(Y) == True:
                 return True
@@ -24,8 +26,8 @@ def exist_day(Y, M, D):
         if M in [1, 3, 5, 7, 8, 10, 12]:
             if D in range(1, 32):
                 return True
-        else:
-            return False
+            else:
+                return False
     else:
         return False
 
