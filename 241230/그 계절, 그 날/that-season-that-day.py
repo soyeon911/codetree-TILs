@@ -10,26 +10,13 @@ def leap_year(Y):
     return False
 
 def exist_day(Y, M, D):
-    if M >= 1 and M <= 12:
-        if M in [4, 6, 9, 11]:
-            if D in range(1, 31):
-                return True
-            else:
-                return False
-        if M == 2:
-            if leap_year(Y) == True:
-                return True
-            else:
-                if D in range(1, 29):
-                    return True
-                return False
-        if M in [1, 3, 5, 7, 8, 10, 12]:
-            if D in range(1, 32):
-                return True
-            else:
-                return False
-    else:
-        return False
+    days_in_month = [31, 29 if leap_year(Y) else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    
+    if 1 <= M <= 12:
+        return 1 <= D <= days_in_month[M - 1]
+    return False
+
 
 def season(M):
     if M in [3, 4, 5]:
