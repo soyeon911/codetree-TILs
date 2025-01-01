@@ -7,4 +7,5 @@ n = int(input())
 numbers = list(map(int, input().split()))
 
 modify(numbers)
-print(" ".join(map(str, numbers)))
+for j in numbers:
+    print(j, end = " ")
