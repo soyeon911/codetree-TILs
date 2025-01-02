@@ -7,7 +7,7 @@ def find_index(input_str, traget_str):
 
 result = find_index(input_str, traget_str)
 
-if find_index(input_str, traget_str):
+if result != -1:
     print(result)
 else:
     print("-1")
