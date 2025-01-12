@@ -17,6 +17,7 @@ arr = list(map(int, input().split()))
 
 # 홀수 번째 수를 지날 때마다 정렬을 진행한 후 가운데 값을 출력함
 for i in range(n):
+    # 홀수 번째 수는 배열 index가 짝수 !!!!
     if i % 2 == 0:
         sorted_arr = sorted(arr[:i + 1])
         print(sorted_arr[i // 2], end = " ")
