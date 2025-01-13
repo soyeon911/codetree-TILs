@@ -7,11 +7,12 @@ for _ in range(MAX_N):
     codenames.append(codename)
     scores.append(int(score))
 
+min_index = scores.index(min(scores))
+
 class ent:
     def __init__(self, codename, score):
         self.codename = codename
         self.score = score
 
-scores.sort()
-union = ent(codenames[0], scores[0])
+union = ent(codenames[min_index], scores[min_index])
 print(union.codename, union.score)
