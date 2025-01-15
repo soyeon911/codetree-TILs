@@ -1,10 +1,5 @@
 n = int(input())
 
-name = []
-score1 = []
-score2 = []
-score3 = []
-
 class Grade:
     def __init__(self, name, score1, score2, score3):
         self.name = name
