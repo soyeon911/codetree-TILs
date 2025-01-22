@@ -1,4 +1,4 @@
-# N은 10진수, B는 진법
+# N은 10진수, q는 진법
 n, q = map(int, input().split())
 
 def solution(n, q):
