@@ -5,7 +5,8 @@
 |[Novice Mid / 시뮬레이션 I / Notation](https://www.codetree.ai/missions?missionId=5)|10xp|![쉬움][easy]|
 
 
-
+누가 쉽대 ;;
+진법 변환은 정수형보다 문자형이 더 쉬운 듯
 
 
 
