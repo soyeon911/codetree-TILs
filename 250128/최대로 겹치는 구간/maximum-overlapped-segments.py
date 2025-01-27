@@ -1,19 +1,21 @@
 n = int(input())
 segments = [tuple(map(int, input().split())) for _ in range(n)]
 
-max_point = max(b for _, b in segments)
-
-lines = [0] * (max_point + 2)
-
+# 이벤트 방식 사용
+events = []
 for a, b in segments:
-    lines[a] += 1
-    lines[b + 1] -= 1
+    events.append((a, 1))   # 선분의 시작: +1
+    events.append((b, -1))  # 선분의 끝: -1 (b에서 끝남)
 
-curr = 0
-max_line = 0
+# 좌표 정렬 (같은 좌표에서는 끝 이벤트가 먼저 처리되도록 설정)
+events.sort(key=lambda x: (x[0], x[1]))
 
-for line in lines:
-    curr += line
-    max_line = max(max_line, curr)
+# 최대 겹침 계산
+current_overlap = 0
+max_overlap = 0
 
-print(max_line)
+for _, event in events:
+    current_overlap += event
+    max_overlap = max(max_overlap, current_overlap)
+
+print(max_overlap)
