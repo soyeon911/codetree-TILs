@@ -22,7 +22,7 @@ for _ in range(n):
                 tiles[i] = "B"
         pos += x
 
-cnt_b = sum(1 for tile in tiles if tile == "B")
-cnt_w = sum(1 for tile in tiles if tile == "W")
+cnt_b = tiles.count("B")
+cnt_w = tiles.count("W")
 
 print(f"{cnt_w} {cnt_b}")
