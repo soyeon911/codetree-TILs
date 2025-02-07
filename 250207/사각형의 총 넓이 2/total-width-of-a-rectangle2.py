@@ -1,20 +1,19 @@
 n = int(input())
-x1, y1, x2, y2 = [], [], [], []
+
+OFFSET = 1000  # 음수 좌표 처리를 위한 보정값
+SIZE = 2000  # 격자 크기 (좌표 범위 고려)
+
+grid = [[0] * SIZE for _ in range(SIZE)]  # 2D 배열 (전체를 0으로 초기화)
+
 for _ in range(n):
     a, b, c, d = map(int, input().split())
-    x1.append(a)
-    y1.append(b)
-    x2.append(c)
-    y2.append(d)
 
+    # 좌표를 OFFSET을 적용하여 2D 배열에 매핑
+    for i in range(a + OFFSET, c + OFFSET):
+        for j in range(b + OFFSET, d + OFFSET):
+            grid[i][j] = 1  # 색칠
 
-square1 = (x2[0] - x1[0]) * (y2[0] - y1[0])
-square2 = (x2[1] - x1[1]) * (y2[1] - y1[1])
+# 색칠된 부분(1의 개수) 세기
+total_area = sum(row.count(1) for row in grid)
 
-# 겹치는 부분 넓이 계산
-overlap_width = max(0, min(x2[0], x2[1]) - max(x1[0], x1[1]))
-overlap_height = max(0, min(y2[0], y2[1]) - max(y1[0], y1[1]))
-overlap = overlap_width * overlap_height
-
-total = square1 + square2 - overlap
-print(total)
+print(total_area)
