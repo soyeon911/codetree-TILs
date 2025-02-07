@@ -16,5 +16,5 @@ overlap_width = max(0, min(x2[0], x2[1]) - max(x1[0], x1[1]))
 overlap_height = max(0, min(y2[0], y2[1]) - max(y1[0], y1[1]))
 overlap = overlap_width * overlap_height
 
-
-print(square1 + square2 - overlap)
+total = square1 + square2 - overlap
+print(total)
