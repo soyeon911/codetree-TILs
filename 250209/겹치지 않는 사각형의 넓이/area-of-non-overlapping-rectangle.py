@@ -1,27 +1,32 @@
-x1 = [0] * 3
-y1 = [0] * 3
-x2 = [0] * 3
-y2 = [0] * 3
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+m = list(map(int, input().split()))
 
-for i in range(3):
-    x1[i], y1[i], x2[i], y2[i] = map(int, input().split())
+OFFSET = 1000  # 음수 좌표 처리를 위한 보정값
+SIZE = 2000  # 격자 크기 (좌표 범위 고려)
 
-A, B, M = 0, 1, 2
+box = [[0 for col in range(SIZE + 1)] for row in range(SIZE + 1)]  # 2D 배열 (전체를 0으로 초기화)
 
-# A, B 의 기존 넓이
-area_A = (x2[A] - x1[A]) * (y2[A] - y1[A])
-area_B = (x2[B] - x1[B]) * (y2[B] - y1[B])
+def make_box(b):
+    x1, y1, x2, y2 = b[0] + OFFSET, b[1] + OFFSET, b[2] + OFFSET, b[3] + OFFSET
+    for x in range(x1, x2):
+        for y in range(y1, y2):
+            box[x][y] = 1
 
-# M 이 A를 덮는 영역
-overlap_A_width = max(0, min(x2[A], x2[M]) - max(x1[A], x1[M]))
-overlap_A_height = max(0, min(y2[A], y2[M]) - max(x1[A], x1[M]))
-overlap_A = overlap_A_width * overlap_A_height
+def del_box(m):
+    x1, y1, x2, y2 = m[0] + OFFSET, m[1] + OFFSET, m[2] + OFFSET, m[3] + OFFSET
+    for x in range(x1, x2):
+        for y in range(y1, y2):
+            box[x][y] -= 1
 
-# M 이 B를 덮는 영역
-overlap_B_width = max(0, min(x2[B], x2[M]) - max(x1[B], x1[M]))
-overlap_B_height = max(0, min(y2[B], y2[M]) - max(y1[B], y1[M]))
-overlap_B = overlap_B_width * overlap_B_height
+make_box(a)
+make_box(b)
+del_box(m)
 
-# 잔여 A, B 넓이 합
-result = area_A + area_B - overlap_A - overlap_B
+result = 0
+for x in range(SIZE + 1):
+    for y in range(SIZE + 1):
+        if box[x][y] == 1:
+            result += 1
+
 print(result)
