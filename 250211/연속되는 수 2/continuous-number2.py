@@ -4,10 +4,6 @@ arr = []
 for _ in range(n):
     arr.append(int(input()))
 
-if n == 1:  # 입력이 1개라면, 당연히 1이 정답
-    print(1)
-    exit()
-
 cnt = 1
 result = 1  # 최소한 1개 이상은 존재함
 
