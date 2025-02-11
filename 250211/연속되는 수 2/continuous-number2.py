@@ -1,6 +1,6 @@
 n = int(input())
 arr = []
-cnt = 0
+cnt = 1
 result = 0
 
 for _ in range(n):
