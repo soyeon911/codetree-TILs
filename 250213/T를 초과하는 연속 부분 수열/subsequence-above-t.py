@@ -1,17 +1,17 @@
-n, t = map(int, input().split())  # N: 수열 길이, T: 기준 숫자
-arr = list(map(int, input().split()))  # 수열 입력
+n, t = map(int, input().split())  
+arr = list(map(int, input().split()))  
 
-max_length = 0  # 최장 연속 부분 수열 길이
-cnt = 0  # 현재 연속 부분 수열의 길이
+max_length = 0 
+cnt = 0
 
 for i in range(n):
     if arr[i] > t:  
-        cnt += 1  # T보다 크면 연속 부분 수열 길이 증가
+        cnt += 1 
     else:
-        max_length = max(max_length, cnt)  # 최대 길이 갱신
-        cnt = 0  # 연속 부분 수열 초기화
+        max_length = max(max_length, cnt)  
+        cnt = 0  
 
-# 마지막 연속 부분 수열 고려
+
 max_length = max(max_length, cnt)
 
 print(max_length)
