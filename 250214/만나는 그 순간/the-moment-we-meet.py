@@ -42,5 +42,5 @@ for i in range(max(len(a_ans_arr), len(b_ans_arr))):
         result = i + 1
         print(result)
         break
-    if i == max(len(a_ans_arr), len(b_ans_arr)) - 1:
+    else:
         print(-1)
