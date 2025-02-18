@@ -1,7 +1,7 @@
-max_t = 1000000
+MAX_T = 1000000
 
 n, m = tuple(map(int, input().split()))
-pos_a,  pos_b = [0] * (max_t + 1), [0] * (max_t + 1)
+pos_a,  pos_b = [0] * (MAX_T + 1), [0] * (MAX_T + 1)
 
 time_a = 1
 for _ in range(n):
@@ -12,7 +12,7 @@ for _ in range(n):
 
 time_b = 1
 for _ in range(m):
-    v, t = tuple(map(int, input().split))
+    v, t = tuple(map(int, input().split()))
     for _ in range(t):
         pos_b[time_b] = pos_b[time_b - 1] + v
         time_b += 1
