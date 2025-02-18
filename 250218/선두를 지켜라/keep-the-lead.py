@@ -19,7 +19,7 @@ for _ in range(m):
 
 # a가 선두면 1, b가 선두면 2
 leader, ans = 0, 0
-for i in range(i, time_a):
+for i in range(1, time_a):
     if pos_a[i] > pos_b[i]:
         if leader == 2:
             ans += 1
