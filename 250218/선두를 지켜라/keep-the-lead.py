@@ -1,52 +1,32 @@
-n, m = map(int, input().split())
+max_t = 1000000
 
-a_moves = [tuple(map(int, input().split())) for _ in range(n)]
-b_moves = [tuple(map(int, input().split())) for _ in range(m)]
+n, m = tuple(map(int, input().split()))
+pos_a,  pos_b = [0] * (max_t + 1), [0] * (max_t + 1)
 
-a_pos, b_pos = 0, 0
-time_events = []
+time_a = 1
+for _ in range(n):
+    v, t = tuple(map(int, input().split()))
+    for _ in range(t):
+        pos_a[time_a] = pos_a[time_a - 1] + v
+        time_a += 1
 
-for speed, duration in a_moves:
-    time_events.append((duration, speed, 'a'))
+time_b = 1
+for _ in range(m):
+    v, t = tuple(map(int, input().split))
+    for _ in range(t):
+        pos_b[time_b] = pos_b[time_b - 1] + v
+        time_b += 1
 
-for speed, duration in b_moves:
-    time_events.append((duration, speed, 'b'))
-
-time_events.sort()
-
-lead_changes = 0
-prev_leader = None
-
-a_idx, b_idx = 0, 0
-a_speed, b_speed = 0, 0
-a_time, b_time = 0, 0
-
-while a_idx < n or b_idx < n:
-    if a_time == 0 and a_idx < n:
-        a_speed, a_time = a_moves[a_idx]
-        a_idx += 1
+# a가 선두면 1, b가 선두면 2
+leader, ans = 0, 0
+for i in range(i, time_a):
+    if pos_a[i] > pos_b[i]:
+        if leader == 2:
+            ans += 1
+        leader = 1
+    elif pos_a[i] < pos_b[i]:
+        if leader == 1:
+            ans += 1
+        leader = 2
     
-    if b_time == 0 and b_idx < m:
-        b_speed, b_time = b_moves[b_idx]
-        b_idx += 1
-    
-    move_time = min(a_time, b_time)
-    a_pos += a_speed * move_time
-    b_pos += b_speed * move_time
-
-    a_time -= move_time
-    b_time -= move_time
-
-    if a_pos > b_pos:
-        curr_leader = 'a'
-    elif a_pos < b_pos:
-        curr_leader = 'b'
-    else:
-        curr_leader = prev_leader
-    
-    if curr_leader != prev_leader and prev_leader is not None:
-        lead_changes += 1
-    
-    prev_leader = curr_leader
-
-print(lead_changes)
+print(ans)
